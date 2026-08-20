@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teniola Adamolekun — Software Developer</title>
+  <title>Samuel Adamolekun — Software Developer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1227,22 +1227,42 @@
 
     @media (max-width: 860px) {
 
+      /* backdrop-filter on <header> creates a "containing block" for any
+         position:fixed descendant (like .nav-links), which was trapping
+         the mobile menu inside header's own 76px-tall box instead of
+         letting it cover the full screen — that's what caused the
+         overlapping/floating text. Dropping the filter on mobile and
+         using a fully solid header background fixes it. */
+      header {
+        backdrop-filter: none;
+        background: var(--ink);
+      }
+
       .nav-links {
         position: fixed;
         top: 76px;
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: 99;
         background: var(--ink);
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 40px 32px;
-        gap: 26px;
+        gap: 30px;
         transform: translateX(100%);
         transition: transform .3s ease;
       }
 
       .nav-links.open {
         transform: translateX(0);
+      }
+
+      .nav-links a {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--parchment);
       }
 
       .nav-toggle {
@@ -1409,7 +1429,7 @@
           </h1>
 
           <p class="role">
-            Software-developing tech bro😂, driven by <b>technology</b>, a lover of
+            Software-developing tech bro, driven by <b>technology</b>, a lover of
             <b>music and movies</b>, and curious about <b>business, economics, politics,
               and the world around me.</b>
           </p>
@@ -2881,7 +2901,7 @@
       /* Replace this with your own Formspree endpoint,
          e.g. https://formspree.io/f/abcdwxyz
          Get one free at https://formspree.io */
-      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkjwyzbz';
+      const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
       const form = document.getElementById('contactForm');
       if (!form) return;
